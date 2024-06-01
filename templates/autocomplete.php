@@ -111,6 +111,9 @@
 					attributesToSnippet: [
 						'content:10'
 					],
+					facetFilters: [
+						'taxonomies.category:test'
+					],
 					highlightPreTag: '__ais-highlight__',
 					highlightPostTag: '__/ais-highlight__'
 				} ),

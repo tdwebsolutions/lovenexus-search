@@ -109,7 +109,7 @@ get_header();
 					/* Search box widget */
 					instantsearch.widgets.searchBox({
 						container: '#algolia-search-box',
-						placeholder: 'Search for...',
+						placeholder: 'Search for 1...',
 						showReset: false,
 						showSubmit: false,
 						showLoadingIndicator: false,
@@ -122,6 +122,9 @@ get_header();
 
 					instantsearch.widgets.configure({
 						hitsPerPage: 10,
+						facetFilters: [
+						'taxonomies.category:test'
+					],
 					}),
 
 					/* Hits widget */
@@ -178,7 +181,7 @@ get_header();
 					/* Tags refinement widget */
 					instantsearch.widgets.refinementList({
 						container: '#facet-tags',
-						attribute: 'taxonomies.post_tag',
+						attribute: 'taxonomies.post_tag',												
 						operator: 'and',
 						limit: 15,
 						sortBy: ['isRefined:desc', 'count:desc', 'name:asc'],
