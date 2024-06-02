@@ -37,10 +37,6 @@ get_header();
 				<h3 class="widgettitle"><?php esc_html_e( 'Tags', 'wp-search-with-algolia' ); ?></h3>
 				<section class="ais-facets" id="facet-tags"></section>
 			</div>
-			<div>
-				<h3 class="widgettitle"><?php esc_html_e( 'Users', 'wp-search-with-algolia' ); ?></h3>
-				<section class="ais-facets" id="facet-users"></section>
-			</div>
 		</aside>
 	</div>
 
@@ -109,7 +105,7 @@ get_header();
 					/* Search box widget */
 					instantsearch.widgets.searchBox({
 						container: '#algolia-search-box',
-						placeholder: 'Search for 1...',
+						placeholder: 'Search for ...',
 						showReset: false,
 						showSubmit: false,
 						showLoadingIndicator: false,
@@ -122,9 +118,7 @@ get_header();
 
 					instantsearch.widgets.configure({
 						hitsPerPage: 10,
-						facetFilters: [
-						'taxonomies.category:test'
-					],
+						filters: 'taxonomies_hierarchical.category.lvl0:"Partner Questions"',
 					}),
 
 					/* Hits widget */
@@ -168,6 +162,7 @@ get_header();
 						attribute: 'post_type_label',
 						sortBy: ['isRefined:desc', 'count:desc', 'name:asc'],
 						limit: 10,
+						
 					}),
 
 					/* Categories refinement widget */
@@ -185,14 +180,6 @@ get_header();
 						operator: 'and',
 						limit: 15,
 						sortBy: ['isRefined:desc', 'count:desc', 'name:asc'],
-					}),
-
-					/* Users refinement widget */
-					instantsearch.widgets.menu({
-						container: '#facet-users',
-						attribute: 'post_author.display_name',
-						sortBy: ['isRefined:desc', 'count:desc', 'name:asc'],
-						limit: 10,
 					}),
 				]);
 

@@ -135,9 +135,6 @@ class Algolia_Search {
 			array(
 				'attributesToRetrieve' => 'post_id',
 				'hitsPerPage'          => (int) get_option( 'posts_per_page' ),
-				'facetFilters' => [
-					'taxonomies.category:test'
-				],
 				'page'                 => $current_page - 1, // Algolia pages are zero indexed.
 				'highlightPreTag'      => '<em class="algolia-search-highlight">',
 				'highlightPostTag'     => '</em>',
@@ -151,7 +148,6 @@ class Algolia_Search {
 
 		try {
 			$results = $this->index->search( $query->query['s'], $params, $order_by, $order );
-			print_r($results);
 		} catch ( AlgoliaException $exception ) {
 			error_log( $exception->getMessage() ); // phpcs:ignore -- Legacy.
 

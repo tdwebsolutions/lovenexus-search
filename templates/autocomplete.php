@@ -111,9 +111,7 @@
 					attributesToSnippet: [
 						'content:10'
 					],
-					facetFilters: [
-						'taxonomies.category:test'
-					],
+					filters: 'taxonomies_hierarchical.category.lvl0:"Partner Questions"',
 					highlightPreTag: '__ais-highlight__',
 					highlightPostTag: '__/ais-highlight__'
 				} ),
