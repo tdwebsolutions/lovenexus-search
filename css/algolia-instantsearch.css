@@ -1,7 +1,6 @@
 #ais-wrapper {
 	display: flex;
 	background-color: white;
-	margin: 3rem;
 }
 
 #ais-main {
@@ -299,13 +298,15 @@
 	}
 	
 	#ais-main {
-		padding: 1rem;
 		width: 100%;
+		padding: 1rem;
+		margin-top: 0;
 	}
 	
 	#ais-facets {
 		width: 100%;
 		padding: 1rem;
+		margin-bottom: 0;
 	}
 
 	.ais-hits--thumbnail img {
