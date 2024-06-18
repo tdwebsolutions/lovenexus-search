@@ -5,13 +5,13 @@
 }
 
 #ais-main {
-	padding: 1rem;
+	margin: 2rem;
 	width: 100%;
 }
 
 #ais-facets {
 	width: 40%;
-	padding: 1rem;
+	margin: 2rem;
 }
 
 .ais-facets {
@@ -294,8 +294,18 @@
 
 /* Responsive */
 @media only screen and (max-width: 1000px) {
+	#ais-wrapper {
+		flex-direction: column-reverse;
+	}
+	
+	#ais-main {
+		margin: 2rem;
+		width: 100%;
+	}
+	
 	#ais-facets {
-		display: none;
+		width: 100%;
+		margin: 2rem;
 	}
 
 	.ais-hits--thumbnail img {
