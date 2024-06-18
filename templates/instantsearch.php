@@ -26,15 +26,11 @@ get_header();
 		</main>
 		<aside id="ais-facets">
 			<div>
-				<h3 class="widgettitle"><?php esc_html_e( 'Post Types', 'wp-search-with-algolia' ); ?></h3>
-				<section class="ais-facets" id="facet-post-types"></section>
-			</div>
-			<div>
 				<h3 class="widgettitle"><?php esc_html_e( 'Categories', 'wp-search-with-algolia' ); ?></h3>
 				<section class="ais-facets" id="facet-categories"></section>
 			</div>
 			<div>
-				<h3 class="widgettitle"><?php esc_html_e( 'Tags', 'wp-search-with-algolia' ); ?></h3>
+				<h3 class="widgettitle"><?php esc_html_e( 'Date', 'wp-search-with-algolia' ); ?></h3>
 				<section class="ais-facets" id="facet-tags"></section>
 			</div>
 		</aside>
@@ -156,21 +152,17 @@ get_header();
 						container: '#algolia-pagination'
 					}),
 
-					/* Post types refinement widget */
-					instantsearch.widgets.menu({
-						container: '#facet-post-types',
-						attribute: 'post_type_label',
-						sortBy: ['isRefined:desc', 'count:desc', 'name:asc'],
-						limit: 10,
-						
-					}),
-
 					/* Categories refinement widget */
 					instantsearch.widgets.hierarchicalMenu({
 						container: '#facet-categories',
 						separator: ' > ',
 						sortBy: ['count'],
 						attributes: ['taxonomies_hierarchical.category.lvl0', 'taxonomies_hierarchical.category.lvl1', 'taxonomies_hierarchical.category.lvl2'],
+						rootPath: 'Partner Questions',
+						showParentLevel: true, 
+						limit: 1000
+						
+
 					}),
 
 					/* Tags refinement widget */
