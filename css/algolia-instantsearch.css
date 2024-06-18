@@ -299,13 +299,13 @@
 	}
 	
 	#ais-main {
-		margin: 2rem;
+		padding: 1rem;
 		width: 100%;
 	}
 	
 	#ais-facets {
 		width: 100%;
-		margin: 2rem;
+		padding: 1rem;
 	}
 
 	.ais-hits--thumbnail img {
