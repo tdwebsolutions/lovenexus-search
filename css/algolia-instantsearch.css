@@ -28,6 +28,10 @@
 	margin-left: 0;
 }
 
+.ais-RefinementList-checkbox {
+	margin-right: 0.5rem;
+}
+
 .ais-clearfix {
 	clear: both;
 }
