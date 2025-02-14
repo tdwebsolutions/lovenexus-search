@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:       WP Search with Lovenexus
- * Plugin URI:        https://github.com/tdwebsolutions/lovenexus-search
- * Description:       Integrate the powerful Lovenexus search service with WordPress
+ * Plugin Name:       WP Search with Internetnexus
+ * Plugin URI:        https://github.com/tdwebsolutions/Internetnexus-search
+ * Description:       Integrate the powerful Internetnexus search service with WordPress
  * Version:           2.8.2
  * Requires at least: 5.0
  * Requires PHP:      7.4
- * Author:            Lovenexus
+ * Author:            Internetnexus
  * Author URI:        https://internetnexus.com
  * License:           GNU General Public License v2.0 / MIT License
- * Text Domain:       wp-search-with-lovenexus
+ * Text Domain:       wp-search-with-Internetnexus
  * Domain Path:       /languages
  *
  * @since   1.0.0

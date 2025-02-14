@@ -102,8 +102,8 @@ class Algolia_Admin_Page_Autocomplete {
 	 */
 	public function add_page() {
 		add_menu_page(
-			esc_html__( 'Lovenexus Search', 'wp-search-with-algolia' ),
-			esc_html__( 'Lovenexus Search', 'wp-search-with-algolia' ),
+			esc_html__( 'Internetnexus Search', 'wp-search-with-algolia' ),
+			esc_html__( 'Internetnexus Search', 'wp-search-with-algolia' ),
 			'manage_options',
 			'algolia',
 			array( $this, 'display_page' ),
