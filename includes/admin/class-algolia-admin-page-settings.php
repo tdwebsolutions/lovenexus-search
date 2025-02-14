@@ -116,8 +116,8 @@ class Algolia_Admin_Page_Settings {
 		if ( ! $api->is_reachable() ) {
 			// Means this is the only reachable admin page, so make it the default one!
 			return add_menu_page(
-				'WP Search with Algolia',
-				esc_html__( 'Algolia Search', 'wp-search-with-algolia' ),
+				'WP Search with Lovenexus',
+				esc_html__( 'Lovenexus Search', 'wp-search-with-algolia' ),
 				'manage_options',
 				$this->slug,
 				array( $this, 'display_page' ),
@@ -127,7 +127,7 @@ class Algolia_Admin_Page_Settings {
 
 		add_submenu_page(
 			'algolia',
-			esc_html__( 'WP Search with Algolia Settings', 'wp-search-with-algolia' ),
+			esc_html__( 'WP Search with Lovenexus Settings', 'wp-search-with-algolia' ),
 			esc_html__( 'Settings', 'wp-search-with-algolia' ),
 			$this->capability,
 			$this->slug,

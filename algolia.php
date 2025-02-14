@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:       WP Search with Algolia
- * Plugin URI:        https://github.com/WebDevStudios/wp-search-with-algolia
- * Description:       Integrate the powerful Algolia search service with WordPress
+ * Plugin Name:       WP Search with Lovenexus
+ * Plugin URI:        https://github.com/tdwebsolutions/lovenexus-search
+ * Description:       Integrate the powerful Lovenexus search service with WordPress
  * Version:           2.8.2
  * Requires at least: 5.0
  * Requires PHP:      7.4
- * Author:            WebDevStudios
- * Author URI:        https://webdevstudios.com
+ * Author:            Lovenexus
+ * Author URI:        https://internetnexus.com
  * License:           GNU General Public License v2.0 / MIT License
- * Text Domain:       wp-search-with-algolia
+ * Text Domain:       wp-search-with-lovenexus
  * Domain Path:       /languages
  *
  * @since   1.0.0
@@ -149,3 +149,24 @@ if ( algolia_php_version_check() && algolia_wp_version_check() ) {
 } else {
 	add_action( 'admin_notices', 'algolia_requirements_error_notice' );
 }
+
+// Prevent WordPress from showing update notifications for this plugin
+add_filter('site_transient_update_plugins', function ($transient) {
+    if ( isset($transient->response['wp-search-with-algolia/wp-search-with-algolia.php']) ) {
+        unset($transient->response['wp-search-with-algolia/wp-search-with-algolia.php']);
+    }
+    return $transient;
+});
+
+// Prevent WordPress from checking for plugin updates
+remove_action('load-update-core.php', 'wp_update_plugins');
+add_filter('pre_site_transient_update_plugins', '__return_null');
+add_filter('pre_transient_update_plugins', '__return_null');
+
+// Disable automatic updates for this plugin
+add_filter('auto_update_plugin', function ($update, $item) {
+    if ($item->slug === 'wp-search-with-algolia') {
+        return false;
+    }
+    return $update;
+}, 10, 2);
