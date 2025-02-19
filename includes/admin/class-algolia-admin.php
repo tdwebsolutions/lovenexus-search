@@ -57,14 +57,14 @@ class Algolia_Admin {
 
 		new Algolia_Admin_Page_Settings( $plugin );
 
-		new Algolia_Admin_Page_WooCommerce( $plugin );
-		new Algolia_Admin_Page_SEO( $plugin );
-		new Algolia_Admin_Page_Premium_Support( $plugin );
+		//new Algolia_Admin_Page_WooCommerce( $plugin );
+		//new Algolia_Admin_Page_SEO( $plugin );
+		//new Algolia_Admin_Page_Premium_Support( $plugin );
 
 		add_action( 'admin_notices', array( $this, 'display_unmet_requirements_notices' ) );
 
 		add_filter( 'admin_footer_text', array( $this, 'algolia_footer' ) );
-		add_action( 'admin_menu', [ $this, 'add_pro_menu_item' ], 1000 );
+		//add_action( 'admin_menu', [ $this, 'add_pro_menu_item' ], 1000 );
 		add_action( 'admin_init', [ $this, 'handle_pro_redirect' ] );
 	}
 
@@ -367,25 +367,25 @@ class Algolia_Admin {
 	 *
 	 * @since 2.5.0
 	 */
-	public function add_pro_menu_item() {
-		global $submenu;
+	// public function add_pro_menu_item() {
+	// 	global $submenu;
 
-		$submenu['algolia'][] = [ // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Only real way to modify in this way.
-			'<span class="algolia-menu-highlight">' . esc_html__( 'Upgrade to Pro', 'wp-search-with-algolia' ) . '</span>',
-			'manage_options',
-			wp_nonce_url(
-				add_query_arg(
-					[
-						'page'                => 'algolia-account-settings',
-						'algolia-pro-upgrade' => wp_create_nonce( 'algolia-pro-nonce' ),
-					],
-					admin_url(
-						'admin.php'
-					)
-				)
-			),
-		];
-	}
+	// 	$submenu['algolia'][] = [ // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Only real way to modify in this way.
+	// 		'<span class="algolia-menu-highlight">' . esc_html__( 'Upgrade to Pro', 'wp-search-with-algolia' ) . '</span>',
+	// 		'manage_options',
+	// 		wp_nonce_url(
+	// 			add_query_arg(
+	// 				[
+	// 					'page'                => 'algolia-account-settings',
+	// 					'algolia-pro-upgrade' => wp_create_nonce( 'algolia-pro-nonce' ),
+	// 				],
+	// 				admin_url(
+	// 					'admin.php'
+	// 				)
+	// 			)
+	// 		),
+	// 	];
+	// }
 
 	/**
 	 * Handle redirect to purchase WP Search with Algolia Pro link click.

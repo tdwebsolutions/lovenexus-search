@@ -199,7 +199,7 @@ class Algolia_Admin_Page_Autocomplete {
 	 */
 	public function autocomplete_config_callback() {
 		$indices = $this->autocomplete_config->get_form_data();
-
+		echo '<style>#wpfooter { display: none !important; }</style>';
 		require_once dirname( __FILE__ ) . '/partials/page-autocomplete-config.php';
 	}
 

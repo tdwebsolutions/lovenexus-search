@@ -487,6 +487,7 @@ class Algolia_Admin_Page_Settings {
 	 * @since  1.0.0
 	 */
 	public function display_page() {
+		echo '<style>#wpfooter { display: none !important; }</style>';
 		require_once dirname( __FILE__ ) . '/partials/form-options.php';
 	}
 

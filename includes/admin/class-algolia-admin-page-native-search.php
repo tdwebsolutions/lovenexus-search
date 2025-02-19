@@ -182,6 +182,8 @@ class Algolia_Admin_Page_Native_Search {
 	 * @since  1.0.0
 	 */
 	public function display_page() {
+		echo '<style>#wpfooter { display: none !important; }</style>';
+
 		require_once dirname( __FILE__ ) . '/partials/page-search.php';
 	}
 
