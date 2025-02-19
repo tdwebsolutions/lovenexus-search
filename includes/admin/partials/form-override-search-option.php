@@ -13,10 +13,10 @@
 <div class="input-radio">
 	<label>
 		<input type="radio" value="native"
-			name="algolia_override_native_search" <?php checked( $value, 'native' ); ?>>
-		<?php esc_html_e( 'Do not use Algolia', 'wp-search-with-algolia' ); ?>
+			name="algolia_override_native_search" disabled style="opacity: 0.5;">
+		<?php esc_html_e( 'Do not use Algolia (Disabled)', 'wp-search-with-algolia' ); ?>
 	</label>
-	<div class="radio-info">
+	<div class="radio-info" style="opacity: 0.5;">
 		<?php
 		echo wp_kses(
 			__(
@@ -32,10 +32,10 @@
 
 	<label>
 		<input type="radio" value="backend"
-			name="algolia_override_native_search" <?php checked( $value, 'backend' ); ?>>
-		<?php esc_html_e( 'Use Algolia with the native WordPress search template', 'wp-search-with-algolia' ); ?>
+			name="algolia_override_native_search" disabled style="opacity: 0.5;">
+		<?php esc_html_e( 'Use Algolia with the native WordPress search template (Disabled)', 'wp-search-with-algolia' ); ?>
 	</label>
-	<div class="radio-info">
+	<div class="radio-info" style="opacity: 0.5;">
 		<?php
 		echo wp_kses(
 			__(
@@ -69,3 +69,4 @@
 		?>
 	</div>
 </div>
+
