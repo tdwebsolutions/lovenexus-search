@@ -156,12 +156,11 @@ get_header();
 					instantsearch.widgets.hierarchicalMenu({
 						container: '#facet-categories',
 						separator: ' > ',
-						sortBy: ['count'],
 						attributes: ['taxonomies_hierarchical.category.lvl0', 'taxonomies_hierarchical.category.lvl1', 'taxonomies_hierarchical.category.lvl2'],
 						rootPath: 'Partner Questions',
 						showParentLevel: true, 
-						limit: 1000
-						
+						limit: 1000,
+						sortBy: ['name:asc'], // Ensures categories always stay in the same order
 
 					}),
 
@@ -187,10 +186,101 @@ get_header();
 				/* Start */
 				search.start();
 
-				// This needs work
-				document.querySelector("#algolia-search-box input[type='search']").select()
+
 			}
 		});
+
+		document.addEventListener("DOMContentLoaded", function () {
+    let selectedCategory = localStorage.getItem("selectedCategory") || null;
+
+    function updateCategorySelectionUI() {
+        let foundCategory = false; // Track if selected category exists
+
+        document.querySelectorAll(".ais-HierarchicalMenu-item").forEach(item => {
+            const link = item.querySelector(".ais-HierarchicalMenu-link");
+            if (link) {
+                const categoryValue = link.textContent.replace(/[0-9]/g, "").trim();
+                if (categoryValue === selectedCategory) {
+                    foundCategory = true;
+                    item.classList.add("ais-HierarchicalMenu-item--selected");
+                    link.classList.add("ais-HierarchicalMenu-link--selected");
+                } else {
+                    item.classList.remove("ais-HierarchicalMenu-item--selected");
+                    link.classList.remove("ais-HierarchicalMenu-link--selected");
+                }
+            }
+        });
+
+         // 🔥 Even if category is not found, KEEP it in localStorage
+        if (!foundCategory && selectedCategory) {
+            console.log("⚠️ Selected category is not in UI, but keeping it in memory:", selectedCategory);
+        }
+    }
+    
+    function applySelectedCategory() {
+        document.querySelectorAll(".ais-HierarchicalMenu-link").forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                const categoryValue = this.textContent.replace(/[0-9]/g, "").trim();
+                if (selectedCategory === categoryValue) {
+                    selectedCategory = null;
+                    localStorage.removeItem("selectedCategory");
+                } else {
+                    selectedCategory = categoryValue;
+                    localStorage.setItem("selectedCategory", selectedCategory);
+                }
+
+                updateCategorySelectionUI();
+            });
+        });
+    }
+
+    function forceUpdateUI() {
+        updateCategorySelectionUI();
+    }
+
+    function handleSearchChange() {
+        forceUpdateUI();
+    }
+
+    function waitForElement(selector, callback) {
+        const observer = new MutationObserver((mutations, observerInstance) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                observerInstance.disconnect();
+                callback(element);
+            }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // Observe UI updates and ensure styles always apply
+    const observer = new MutationObserver(() => {
+        forceUpdateUI();
+        applySelectedCategory();
+    });
+
+    waitForElement("#facet-categories", function (targetNode) {
+        observer.observe(targetNode, { childList: true, subtree: true });
+        applySelectedCategory();
+        updateCategorySelectionUI();
+    });
+
+    // Detect search input changes and refresh category selection
+    waitForElement(".ais-SearchBox-input", function (searchInput) {
+        searchInput.addEventListener("input", function () {
+            handleSearchChange();
+        });
+    });
+
+    applySelectedCategory();
+    updateCategorySelectionUI();
+});
+
+
+
 	</script>
 
 <?php

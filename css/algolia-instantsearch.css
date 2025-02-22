@@ -153,26 +153,49 @@
 	font-weight: bold;
 }
 
-.ais-Menu-item--selected {
-	/* active list item */
-	font-weight: bold;
+/* ✅ CATEGORY STYLES */
+.ais-HierarchicalMenu {
+    display: block !important;
 }
 
-.ais-HierarchicalMenu-item--selected {
-	/* Hierarchical Menu: Categories */
-	font-weight: bold;
+/* 🎯 Ensure only the category text is clickable */
+.ais-HierarchicalMenu-item {
+    display: flex;
+    align-items: center;
 }
 
+/* ✅ Clickable Category Name */
+.ais-HierarchicalMenu-link {
+    text-decoration: none !important;
+    color: #18217f !important;
+    padding: 3px 6px !important;
+    border-radius: 6px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    display: inline-block !important; /* ❌ Prevent full width click */
+}
+
+/* ✅ Selected Category */
+.ais-HierarchicalMenu-item--selected .ais-HierarchicalMenu-link {
+    font-weight: bold !important;
+    border-radius: 6px !important;
+    padding: 3px 6px !important;
+    background-color: rgba(24, 33, 127, 0.1) !important;
+}
+
+/* Category count spacing */
 .ais-Menu-count,
 .ais-HierarchicalMenu-count,
 .ais-RefinementList-count {
-	margin-left: 5px;
+    margin-left: 5px;
+    font-weight: bold;
 }
 
+/* Indentation for subcategories */
 .ais-HierarchicalMenu-list--child {
-	/* item list level 1 */
-	margin-left: 10px;
+    margin-left: 10px;
 }
+
 
 .ais-RangeSlider .rheostat {
 	overflow: visible;
@@ -297,38 +320,92 @@
 }
 
 /* Responsive */
+/* 🔥 Hover effect (Only for Non-Touch Devices) */
+@media (hover: hover) {
+    .ais-HierarchicalMenu-link:hover {
+        font-weight: bold !important;
+        background-color: #0070a0 !important;
+        color: white !important;
+        border-radius: 6px !important;
+        padding: 3px 6px !important;
+        transition: background-color 0.2s ease-in-out !important;
+    }
+}
+
+/* ✅ Mobile Tap Feedback - Click only on the text */
+@media only screen and (max-width: 768px) {
+    .ais-HierarchicalMenu-item {
+        pointer-events: none !important; /* ❌ Prevent full area click */
+    }
+
+    .ais-HierarchicalMenu-link {
+        pointer-events: auto !important; /* ✅ Allow click only on the text */
+        display: inline-block !important; /* ❌ Prevent full width click */
+        text-align: left !important;
+        padding: 3px 6px !important;
+    }
+
+    .ais-HierarchicalMenu-link:active {
+        background-color: rgba(0, 112, 160, 0.3) !important;
+    }
+}
+
+/* 📌 Category count spacing */
+.ais-Menu-count,
+.ais-HierarchicalMenu-count,
+.ais-RefinementList-count {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* ✅ Indentation for Subcategories */
+.ais-HierarchicalMenu-list--child {
+    margin-left: 10px;
+}
+
+/* ✅ DESKTOP FIX: Disable clicking on the full item, enable only the text */
+@media (min-width: 769px) {
+    .ais-HierarchicalMenu-item {
+        pointer-events: none;
+    }
+    .ais-HierarchicalMenu-link {
+        pointer-events: auto;
+    }
+}
+
+/* ✅ RESPONSIVE DESIGN */
 @media only screen and (max-width: 1000px) {
-	#ais-wrapper {
-		flex-direction: column-reverse;
-		width: 100%;
-	}
-	
-	#ais-main {
-		width: 100%;
-		padding: 1.5rem;
-		margin: 0;
-	}
-	
-	#ais-facets {
-		width: 100%;
-		padding: 1.5rem;
-		margin: 0;
-	}
+    #ais-wrapper {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    
+    #ais-main {
+        width: 100%;
+        padding: 1.5rem;
+        margin: 0;
+    }
+    
+    #ais-facets {
+        width: 100%;
+        padding: 1.5rem;
+        margin: 0;
+    }
 
-	.ais-hits--thumbnail img {
-		width: 100% !important;
-	}
+    .ais-hits--thumbnail img {
+        width: 100% !important;
+    }
 
-	.ais-Hits-item {
-		border-bottom: 1px solid gainsboro;
-		padding-bottom: 23px;
-	}
+    .ais-Hits-item {
+        border-bottom: 1px solid gainsboro;
+        padding-bottom: 23px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
-	.ais-hits--thumbnail {
-		margin-right: 0 !important;
-		margin-bottom: 10px;
-		float: none !important;
-	}
+    .ais-hits--thumbnail {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+        float: none !important;
+    }
 }
